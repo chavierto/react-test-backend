@@ -4,7 +4,17 @@ const app = express();
 app.set('view engine', 'hbs');
 
 app.get('/', (req, res) => {
-	res.send('No mames');
+	res.render('welcome');
+});
+
+// add 'express.json' middleware which will parse JSON requests into JS objects before they reach the route files.
+// The mothed '.use' sets up middleware for the Express application
+app.use(express.json());
+// this parses requests that may use a different content type
+app.use(express.urlencoded({ extended: true }));
+
+app.post('/', (req, res) => {
+	res.send(`DIABLO ${req.body.name}`);
 });
 
 app.get('/:name', (req, res) => {
