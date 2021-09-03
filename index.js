@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/', (req, res) => {
-	res.send(`DIABLO ${req.body.name}`);
+	res.render('index', { name: req.body.name });
 });
 
 app.get('/:name', (req, res) => {
